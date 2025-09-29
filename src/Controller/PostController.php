@@ -21,6 +21,19 @@ final class PostController extends AbstractController
             'posts' => $postRepo -> findBy([])
         ]);
     }
+     #[Route('/post/{id}/detail', name: 'app_post_detail')]
+    public function detail(int $id, PostRepository $postRepo)
+    {
+      $post = $postRepo ->findOneBy(['id'=>$id]);
+      return $this->render('post/detail.html.twig', [
+        'post'=>$post
+      ]);
+        
+    }
+
+
+
+
 
     #[Route('post/create', name: 'app_post_create')]
     public function create(Request $request, EntityManagerInterface $em) 
@@ -45,4 +58,8 @@ final class PostController extends AbstractController
             'formPost' => $form
         ]);
     }
+
+
+
+
 }

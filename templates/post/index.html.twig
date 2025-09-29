@@ -7,10 +7,11 @@
     <a href="{{ path('app_post_create')}}">Ajouter un post</a>
 
 {% for post in posts %}
-    <h2>{{post.title}}</h2>
+    <a href="{{ path('app_post_detail', {'id' : post.id}) }}"><h2>{{post.title}}</h2></a>
     <p>{{post.summary}}</p>
     <p>{{post.image}}</p>
     
+    <button><a href="{{ path('app_post_detail', {'id' : post.id}) }}">En savoir plus </a></button>
 {% endfor %}
 
 
