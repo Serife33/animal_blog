@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Tous les posts du blog</h1>
+
+    <a href="{{ path('app_post_create')}}">Ajouter un post</a>
+
+{% for post in posts %}
+    <h2>{{post.title}}</h2>
+    <p>{{post.summary}}</p>
+    <p>{{post.image}}</p>
+    
+{% endfor %}
+
+
+{% endblock %}
+
+
