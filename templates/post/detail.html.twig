@@ -6,7 +6,7 @@
     
     <p>Théme : {{post.theme.name}}</p>
     <p>{{post.content}}</p>
-   
+
     <img src="{{ asset('upload/post/' ~ post.image) }}" alt="">
     
   <button>{% include "post/_form_delete.html.twig" %}</button>

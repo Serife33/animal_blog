@@ -96,6 +96,7 @@ final class PostController extends AbstractController
             'form' => $form
         ]);
     }
+
      
     #[Route('post/{id}/delete', name: 'app_post_delete', methods: ['POST'])]
     public function delete(Request $request, Post $post, EntityManagerInterface $entityManager)
