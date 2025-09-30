@@ -10,10 +10,11 @@
     <a href="{{ path('app_post_detail', {'id' : post.id}) }}"><h2>{{post.title}}</h2></a>
     <p>Théme : {{post.theme.name}}</p>
     <p>{{post.summary}}</p>
-    <p>{{post.image}}</p>
+    <img src="{{ asset('upload/post/' ~ post.image) }}" alt="">
     
     <button><a href="{{ path('app_post_detail', {'id' : post.id}) }}">En savoir plus </a></button>
     <button><a href="{{ path('app_post_update', {'id' : post.id}) }}">Modifier </a></button>
+    <button>{% include "post/_form_delete.html.twig" %}</button>
 {% endfor %}
 
 

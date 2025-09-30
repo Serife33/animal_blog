@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Form\PostType;
+use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,11 +24,13 @@ final class PostController extends AbstractController
         ]);
     }
      #[Route('/post/{id}/detail', name: 'app_post_detail')]
-    public function detail(int $id, PostRepository $postRepo)
+    public function detail(int $id, PostRepository $postRepo, CommentRepository $commentRepository)
     {
       $post = $postRepo ->findOneBy(['id'=>$id]);
+      $comments = $commentRepository->findBy(['id_post' => $id], ['createdAt' => 'DESC']);
       return $this->render('post/detail.html.twig', [
-        'post'=>$post
+        'post'=>$post, 
+        'comments' => $comments
       ]);
         
     }
@@ -50,12 +53,13 @@ final class PostController extends AbstractController
             if($file) {
                 // dd('super, jai une image je vais pouvoir la traiter');
                 $newFileName = time() . '-' . $file->getClientOriginalName(); // cette ligne permet de changer le nom du fichier de manière unique 
-              
-                $file->move($this->getParameter('post_d
-                
-                ir'), $newFileName);
+                // time() c'est comme unique id 
+                // dd($newName, $post, $fileName); 
+
+                $file->move($this->getParameter('post_dir'), $newFileName); 
+
                 $post->setImage($newFileName);
-           
+                // dd($file, $post, $newFileName); 
             }
             // dd($form->get('image')->getData()); // vérification des données de l'image
             $em->persist($post); 
@@ -92,4 +96,19 @@ final class PostController extends AbstractController
             'form' => $form
         ]);
     }
+     
+    #[Route('post/{id}/delete', name: 'app_post_delete', methods: ['POST'])]
+    public function delete(Request $request, Post $post, EntityManagerInterface $entityManager)
+    {
+        if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($post);
+            $entityManager->flush();
+            $this->addFlash('success', 'le post a bien été supprimé');
+            return $this->redirectToRoute('app_post');
+        }
+
+        return $this->redirectToRoute('app_post');
+    }
+
+   
 }
