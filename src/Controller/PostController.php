@@ -97,14 +97,19 @@ final class PostController extends AbstractController
         ]);
     }
 
+     
+    #[Route('post/{id}/delete', name: 'app_post_delete', methods: ['POST'])]
+    public function delete(Request $request, Post $post, EntityManagerInterface $entityManager)
+    {
+        if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($post);
+            $entityManager->flush();
+            $this->addFlash('success', 'le post a bien été supprimé');
+            return $this->redirectToRoute('app_post');
+        }
 
-    // #[Route('post/{id}/detail/comment', name:'app_post_comment')]
-    // public function comment(Post $post, CommentRepository $commentRepository, $id) {
-    //     $comments = $commentRepository->findBy(['id_post' => $id], ['createdAt' => 'DESC']);
-    //     // dd($post, $comments);
-    //     return $this->render('post/detail.html.twig', [
-    //         'comments' => $comments,
-    //         'post' => $post
-    //     ]);
-    // }
+        return $this->redirectToRoute('app_post');
+    }
+
+   
 }
