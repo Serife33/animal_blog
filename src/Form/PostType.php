@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Post;
+use App\Entity\Theme;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,6 +16,12 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('theme', EntityType::class , [
+                'class' => Theme::class,
+                 'choice_label' => 'name',
+                 'label'=> 'Théme',
+                 'placeholder'=> 'Choisir un théme',
+            ])
             ->add('summary')
             ->add('content')
             ->add('image')

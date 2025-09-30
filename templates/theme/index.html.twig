@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1>Tous les thémes</h1>
+
+   <a href="{{ path('app_theme_create') }}">Ajouter un théme</a>
+
+
+        {% for theme in themes %}
+            
+                <p>{{ theme.id }}</p>
+                <p>{{ theme.name }}</p>
+
+                    <a href="{{ path('app_theme_show', {'id': theme.id}) }}">show</a>
+                    <a href="{{ path('app_theme_edit', {'id': theme.id}) }}">edit</a>
+                
+        {% endfor %}
+        </tbody>
+
+{% endblock %}

@@ -26,6 +26,10 @@ class Post
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[ORM\ManyToOne(inversedBy: 'posts')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Theme $Theme = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +79,18 @@ class Post
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getTheme(): ?Theme
+    {
+        return $this->Theme;
+    }
+
+    public function setTheme(?Theme $Theme): static
+    {
+        $this->Theme = $Theme;
 
         return $this;
     }
