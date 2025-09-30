@@ -34,7 +34,7 @@ final class PostController extends AbstractController
 
 
 
-
+    // Page de création de post
     #[Route('post/create', name: 'app_post_create')]
     public function create(Request $request, EntityManagerInterface $em) 
     {
@@ -45,12 +45,12 @@ final class PostController extends AbstractController
 
         $form -> handleRequest($request); 
 
-        if ($form->isSubmitted() && $form->isValid()) 
+        if ($form->isSubmitted() && $form->isValid()) // vérification de la soumission et de la validité du formulaire
         {
             $em->persist($post); 
             $em->flush();
 
-            return $this->redirectToRoute('app_post'); 
+            return $this->redirectToRoute('app_post'); // redirection à la page de tous les posts 
         }
 
         // dd($post, $form); 
@@ -60,6 +60,25 @@ final class PostController extends AbstractController
     }
 
 
+    // Formulaire de modification d'un post existant 
+    #[Route('post/{id}/update', name:'app_post_update')]
+    public function update(Post $post, Request $request, EntityManagerInterface $em) {
+        // dd('je suis dans ma page update');
 
+        $form = $this->createForm(PostType::class, $post);
+        // dd($form);
 
+        $form->handleRequest($request); // je récupère le formulaire
+        
+
+        // Je vérifie si le formulaire a bien été soumis et si il est bien valide 
+        if($form->isSubmitted() && $form->isValid()) {
+            $em-> flush(); // je l'envoie 
+            return $this->redirectToRoute('app_post');
+        }
+
+        return $this->render('post/update.html.twig', [
+            'form' => $form
+        ]);
+    }
 }
