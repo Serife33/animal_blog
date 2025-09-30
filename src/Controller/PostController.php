@@ -50,11 +50,12 @@ final class PostController extends AbstractController
             if($file) {
                 // dd('super, jai une image je vais pouvoir la traiter');
                 $newFileName = time() . '-' . $file->getClientOriginalName(); // cette ligne permet de changer le nom du fichier de manière unique 
-                // time() c'est comme unique id 
-                // dd($newName, $post, $fileName); 
-
+              
+                $file->move($this->getParameter('post_d
+                
+                ir'), $newFileName);
                 $post->setImage($newFileName);
-                dd($file, $post, $newFileName); 
+           
             }
             // dd($form->get('image')->getData()); // vérification des données de l'image
             $em->persist($post); 
