@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    <h1>Ajouter un théme</h1>
+
+    {{ include('theme/_form.html.twig') }}
+
+    <a href="{{ path('app_theme_index') }}">back to list</a>
+{% endblock %}
