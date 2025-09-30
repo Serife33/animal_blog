@@ -46,6 +46,17 @@ final class PostController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) // vérification de la soumission et de la validité du formulaire
         {
+            $file = $form->get('image')->getData(); 
+            if($file) {
+                // dd('super, jai une image je vais pouvoir la traiter');
+                $newFileName = time() . '-' . $file->getClientOriginalName(); // cette ligne permet de changer le nom du fichier de manière unique 
+                // time() c'est comme unique id 
+                // dd($newName, $post, $fileName); 
+
+                $post->setImage($newFileName);
+                dd($file, $post, $newFileName); 
+            }
+            // dd($form->get('image')->getData()); // vérification des données de l'image
             $em->persist($post); 
             $em->flush();
 

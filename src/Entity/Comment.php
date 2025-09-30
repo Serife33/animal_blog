@@ -27,6 +27,13 @@ class Comment
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
+
+
+    public function __construct() {
+    // $this me permet de me placer dans l'instance au moment de la création de l'instance
+        $this->createdAt = new \DateTimeImmutable(); 
+    }
+
     public function getId(): ?int
     {
         return $this->id;
