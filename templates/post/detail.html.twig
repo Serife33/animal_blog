@@ -12,9 +12,9 @@
     <img src="{{ asset('upload/post/' ~ post.image) }}" alt="">
   
   <div class="postActions">
-    {% include "post/_form_delete.html.twig" %}
     <button><a href="{{ path('app_post')}}">Retour posts</a></button>
     <button><a href="{{ path('app_comment_new', {'id': post.id})}}"> Ajouter un commentaire </a></button>
+    {% include "post/_form_delete.html.twig" %}
   </div>
   
 
