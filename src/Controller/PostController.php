@@ -89,7 +89,22 @@ final class PostController extends AbstractController
         
 
         // Je vérifie si le formulaire a bien été soumis et si il est bien valide 
-        if($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()) 
+        {
+            
+            $file = $form->get('image')->getData(); 
+            if($file) {
+                // dd('super, jai une image je vais pouvoir la traiter');
+                $newFileName = time() . '-' . $file->getClientOriginalName(); // cette ligne permet de changer le nom du fichier de manière unique 
+                // time() c'est comme unique id 
+                // dd($newName, $post, $fileName); 
+
+                $file->move($this->getParameter('post_dir'), $newFileName); 
+
+                $post->setImage($newFileName);
+                // dd($file, $post, $newFileName); 
+            }
+
             $em-> flush(); // je l'envoie 
             return $this->redirectToRoute('app_post');
         }
