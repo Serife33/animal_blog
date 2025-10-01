@@ -8,5 +8,6 @@ onsubmit="return confirm('Confirmez-vous la suppression du post : {{ post.title}
           name="_token" 
           value= "{{csrf_token('delete' ~ post.id)}}"
           />
-  <input type="submit" value="Supprimer"/>
+  <button type="submit"  class="btn-delete" >Supprimer</button>
+  {# <input type="submit" value="Supprimer"/> #}
     </form>

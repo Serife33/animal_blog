@@ -1,3 +1,321 @@
-body {
-    background-color: skyblue;
+/* body {
+    background-color: rgb(235, 226, 214);
 }
+
+.imageBox {
+    max-width: 100%;
+    height: auto;
+}
+
+img {
+  max-width: 500px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+} */
+
+
+
+/* CONTAINER DES POSTS */
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* STYLE D’UN POST */
+.postCard {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  padding: 1rem;
+}
+
+.postCard:hover {
+  transform: translateY(-4px);
+}
+
+/* IMAGE */
+.imageBox {
+  flex: 0 0 200px;
+  height: 150px;
+  margin-right: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CONTENU */
+.postContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* TITRE + TEXTE */
+.postContent h2 {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+  color: #222;
+}
+
+.postContent p {
+  margin: 0.3rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* BOUTONS */
+.postActions {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.postActions button {
+  background-color: #007BFF; /* bleu principal */
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.postActions button a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.postActions button:hover {
+  background-color: #0056b3;
+}
+
+/* COULEUR VARIANTE POUR MODIFIER ET SUPPRIMER */
+.postActions .btn-edit {
+  background-color: #17a2b8; /* bleu-vert */
+}
+
+.postActions .btn-edit:hover {
+  background-color: #117a8b;
+}
+
+.postActions .btn-delete {
+  background-color: #dc3545; /* rouge */
+}
+
+.postActions .btn-delete:hover {
+  background-color: #a71d2a;
+}
+
+
+/* CONTAINER GLOBAL */
+.postDetail {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* TITRE */
+.postDetail h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #222;
+  text-align: center;
+}
+
+/* TEXTE */
+.postDetail p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* IMAGE */
+.postDetail img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* BOUTONS */
+.postActions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.postActions button {
+  background-color: #007BFF;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.postActions button a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.postActions button:hover {
+  background-color: #0056b3;
+}
+
+/* BOUTON VARIANTES */
+.postActions .btn-delete {
+  background-color: #dc3545;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.postActions .btn-delete:hover {
+  background-color: #a71d2a;
+}
+
+.postActions .btn-comment {
+  background-color: #17a2b8;
+}
+
+.postActions .btn-comment:hover {
+  background-color: #117a8b;
+}
+
+/* COMMENTAIRES */
+.commentSection {
+  margin-top: 2rem;
+}
+
+.commentSection h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+
+.comment {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  font-size: 0.95rem;
+  color: #444;
+}
+
+
+
+/* formulaire */
+
+/* form {
+    max-width: 300px;
+    margin: 30px auto;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+
+} */
+
+/* CONTAINER DU FORMULAIRE */
+.formContainer {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* TITRE */
+.formContainer h1 {
+  text-align: center;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+/* CHAMPS DU FORMULAIRE GENERES */
+.formContainer input,
+.formContainer textarea,
+.formContainer select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.formContainer input:focus,
+.formContainer textarea:focus,
+.formContainer select:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* TEXTAREA */
+.formContainer textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* BOUTONS GENERES PAR Symfony */
+.formContainer button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 0.5rem;
+}
+
+.formContainer button:hover {
+  background-color: #0056b3;
+}
+
+/* BOUTON ANNULER OU RETOUR (si tu ajoutes un lien avec bouton) */
+.formContainer .btn-cancel {
+  background-color: #dc3545;
+}
+
+.formContainer .btn-cancel:hover {
+  background-color: #a71d2a;
+}
+
+/* ERREURS */
+.formContainer .form-error {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+

@@ -3,12 +3,14 @@
 
 {% block body %}
 
-<h1>Page de modification du post</h1>
+<div class="formContainer">
+    <h1>Page de modification du post</h1>
 
-{{form(form)}}
+    {{form(form)}}
 
-<button><a href="{{ path('app_post')}}">Retour posts</a></button>
+    <button><a href="{{ path('app_post')}}">Retour posts</a></button>
 
+</div>
 
 {% endblock %}
 

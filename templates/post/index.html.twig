@@ -2,21 +2,37 @@
 
 {% block body %}
 
-<h1>Tous les posts du blog</h1>
+<section>
+    <h1>Tous les posts du blog</h1>
+    <div>
+        <button><a href="{{ path('app_post_create')}}">Ajouter un post</a></button>
+        <button> <a href="{{ path('app_theme_create')}}">Ajouter un theme</a></button>
+    </div>
     
-    <button><a href="{{ path('app_post_create')}}">Ajouter un post</a></button>
-    <button> <a href="{{ path('app_theme_create')}}">Ajouter un theme</a></button>
 
-{% for post in posts %}
-    <a href="{{ path('app_post_detail', {'id' : post.id}) }}"><h2>{{post.title}}</h2></a>
-    <p>Théme : {{post.theme.name}}</p>
-    <p>{{post.summary}}</p>
-    <img src="{{ asset('upload/post/' ~ post.image) }}" alt="">
+    <div class="postContainer">
+        {% for post in posts %}
+            <div class="postCard">
+                <div class="imageBox">
+                    <img src="{{ asset('upload/post/' ~ post.image) }}" alt="">
+                </div>
+                <div class="postContent">
+                    <a href="{{ path('app_post_detail', {'id' : post.id}) }}"><h2>{{post.title}}</h2></a>
+                    <p>Théme : {{post.theme.name}}</p>
+                    <p>{{post.summary}}</p>
+                    <div class="postActions">
+                        <button><a href="{{ path('app_post_detail', {'id' : post.id}) }}">En savoir plus </a></button>
+                        <button><a href="{{ path('app_post_update', {'id' : post.id}) }}">Modifier </a></button>
+                        {% include "post/_form_delete.html.twig" %}
+                    </div>
+                </div>
+            </div>
+            
+        {% endfor %}
+
+    </div>
     
-    <button><a href="{{ path('app_post_detail', {'id' : post.id}) }}">En savoir plus </a></button>
-    <button><a href="{{ path('app_post_update', {'id' : post.id}) }}">Modifier </a></button>
-    <button>{% include "post/_form_delete.html.twig" %}</button>
-{% endfor %}
+</section>
 
 
 {% endblock %}

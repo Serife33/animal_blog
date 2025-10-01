@@ -3,9 +3,14 @@
 {% block title %}New Comment{% endblock %}
 
 {% block body %}
+
+<div class="formContainer">
     <h1>Ajouter un commentaire</h1>
 
     {{ include('comment/_form.html.twig') }}
 
-    <a href="{{ path('app_comment_index') }}">Liste des commentaires</a>
+    <a href="{{ path('app_comment_index') }}">Liste des commentaires</a>   
+
+</div>
+
 {% endblock %}

@@ -3,11 +3,16 @@
 
 
 {% block body %}
+
+<div class="formContainer">
     <h1>Ajouter un théme</h1>
 
     {{ include('theme/_form.html.twig') }}
 
     <button><a href="{{ path('app_post')}}">Retour posts</a></button>
     <button><a href="{{ path('app_theme_index') }}">Liste des thèmes</a></button>
+
+</div>
+
     
 {% endblock %}

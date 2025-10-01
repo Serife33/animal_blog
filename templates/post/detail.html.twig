@@ -2,23 +2,29 @@
 
 {% block body %}
 
-<h2>{{post.title}}</h2>
+<div class="postDetail">
+
+    <h2>{{post.title}}</h2>
     
     <p>Théme : {{post.theme.name}}</p>
     <p>{{post.content}}</p>
 
     <img src="{{ asset('upload/post/' ~ post.image) }}" alt="">
-    
-  <button>{% include "post/_form_delete.html.twig" %}</button>
-  <button><a href="{{ path('app_post')}}">Retour posts</a></button>
+  
+  <div class="postActions">
+    {% include "post/_form_delete.html.twig" %}
+    <button><a href="{{ path('app_post')}}">Retour posts</a></button>
+    <button><a href="{{ path('app_comment_new', {'id': post.id})}}"> Ajouter un commentaire </a></button>
+  </div>
+  
 
-  <button><a href="{{ path('app_comment_new', {'id': post.id})}}"> Ajouter un commentaire </a></button>
 
-
-
-{% for comment in comments %}
-    <p> {{comment.content}} </p>
-{% endfor %}
+  <div class="commentSection">
+    {% for comment in comments %}
+      <p> {{comment.content}} </p>
+    {% endfor %}
+  </div>
+</div>
 
 
 {% endblock %}
